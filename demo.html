@@ -15,7 +15,7 @@
 <body>
     <div id="wrap">
         <h1>Switch Button DEMO <small>[selectbox]</small></h1>
-        <p>Стандартный SelectBox</p>
+        <p>Берём стандартный SelectBox:</p>
         <p>
             <select>
                 <option value="1">Item One</option>
@@ -32,11 +32,29 @@
         &lt;option value=&quot;4&quot; selected&gt;Item four&lt;/option&gt;
     &lt;/select&gt;
         </code></pre>
-        <p>Хреначим плагин по селектору</p>
+        <p>Хреначим плагин по селектору:</p>
         <pre><code class="javascript">
     $('.btn-switch').switchButton();
         </code></pre>
-        <p>И грамозкий <b>selectbox</b> превращается в элегантную кнопку с индикатором состояния</p>
+        <p>Вешаем чутка стилей</p>
+        <pre><code class="css">
+    .switch-select {
+        overflow: hidden;
+        border-radius: 3px;
+    }
+    .switch-select-button {
+        text-align: center;
+        font-size: 80%;
+        padding: 5px;
+        cursor: pointer;
+        background: rgb(224, 224, 224);
+    }
+    .switch-select-button:hover {
+        background: rgb(207, 55, 55);
+        color: white;
+    }
+        </code></pre>
+        <p>И грамозкий <b>selectbox</b> превращается в элегантную кнопку с индикатором состояния:</p>
         <p>
             <select class='btn-switch'>
                 <option value="1">Item One</option>
@@ -46,6 +64,60 @@
             </select>
         </p>
         <script>$('.btn-switch').switchButton();</script>
+        <p class="magic">Магия блять..</p>
+        <hr/>
+        <h4>Дополнительные параметры</h4>
+        <table class="opt-table">
+            <thead>
+                <tr>
+                    <th>Опция</th>
+                    <th>По умолчанию</th>
+                    <th>Описание</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>template</td>
+                    <td>&lt;div&gt;&lt;/div&gt;</td>
+                    <td>Шаблон элемента в который будет преобразован selectbox</td>
+                </tr>
+                <tr>
+                    <td>class</td>
+                    <td>switch-select</td>
+                    <td>Класс элемента</td>
+                </tr>
+                <tr>
+                    <td>innerclass</td>
+                    <td>switch-select-button</td>
+                    <td>Класс кнопки</td>
+                </tr>
+                <tr>
+                    <td>width</td>
+                    <td>Ширина родительского selectbox'a</td>
+                    <td>Ширина элемента</td>
+                </tr>
+                <tr>
+                    <td>marker</td>
+                    <td>#3577EE</td>
+                    <td>Цвет индикатора</td>
+                </tr>
+                <tr>
+                    <td>markerback</td>
+                    <td>#B9B9B9</td>
+                    <td>Цвет подложки индикатора</td>
+                </tr>
+                <tr>
+                    <td>markerh</td>
+                    <td>4px</td>
+                    <td>Высота индикатора</td>
+                </tr>
+                <tr>
+                    <td>onchange</td>
+                    <td>function(value){}</td>
+                    <td>Callback функуция при выборе элемента, в качестве аргумента возвращает value значение выбанной опции</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
 </body>
 </html>

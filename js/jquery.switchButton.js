@@ -17,10 +17,10 @@
             var options = {
                 'template': opts.template ? opts.template : '<div>',
                 'class': opts.class ? opts.class : 'switch-select',
-                'containerclass': opts.containerclass ? opts.containerclass : 'switch-control',
+                'innerclass': opts.innerclass ? opts.class : 'switch-select-button',
                 'width': opts.width ? opts.width : $(v).width() + 'px',
                 'marker': opts.marker ? opts.marker : '#3577EE',
-                'markerback': opts.markerback ? opts.markerback : '#DADADA',
+                'markerback': opts.markerback ? opts.markerback : '#B9B9B9',
                 'markerh': opts.markerh ? opts.markerh : '4px',
                 'onchange': opts.onchange ? opts.onchange : function () {
                 }
@@ -57,18 +57,19 @@
 
             $(v).after(
                 $('<div>')
+                    // Prevent select
                     .bind('selectstart dragstart', function (evt) {
                         evt.preventDefault();
                         return false;
                     })
-                    .addClass(options.containerclass)
+                    .addClass(options.class)
                     .css({
                         width: options.width
                     })
                     .append(
                         $(options.template)
                             .text($(v).children('option:selected').text())
-                            .addClass(options.class)
+                            .addClass(options.innerclass)
                             .click(function (e) {
                                 // Get elems
                                 var button = $(e.target),
@@ -94,7 +95,7 @@
                                 // Update indicator position
                                 indicator.stop().animate({
                                     left: (nextIndex * (100 / Object.keys(selectIndexes).length)) + '%'
-                                }, 300)
+                                }, 300);
                                 // Fire onChange callback
                                 options.onchange(selectIndexes[nextIndex]);
 
@@ -102,34 +103,6 @@
                         indicator))
         })
     };
-
-    this.destroy = function(){
-
-    }
-
     return this;
-})(jQuery)
-
-
-$('.btn-switch').switchButton({
-    width: '150px',
-    containerclass: 'switch-control-bordered'
-});
-
-$('.btn-switch-green').switchButton({
-    width: '120px',
-    marker: 'green',
-    markerback: 'none'
-});
-
-$('.btn-switch-red').switchButton({
-    template: '<div>',
-    class: 'template-switch',
-    width: '120px',
-    markerh: '10px',
-    marker: '#FFC357',
-    markerback: '#00BD79',
-    onchange: function (val) {
-    }
-});
+})(jQuery);
 
